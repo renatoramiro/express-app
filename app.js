@@ -5,6 +5,8 @@ var http = require('http')
 app.set('view engine', 'jade');
 app.set('views', './views');
 
+app.use(express.static('./public'));
+
 app.get('/', function (req, res) {
 	res.render('index');
 });
