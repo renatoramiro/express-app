@@ -6,9 +6,13 @@ app.set('view engine', 'jade');
 app.set('views', './views');
 
 app.use(express.static('./public'));
+app.set(express.responseTime());
+app.set(app.router);
+app.set(express.errorHandler());
 
 app.get('/', function (req, res) {
-	res.render('index');
+	//res.render('index');
+	fail();
 });
 
 app.get('/say-hello', function (req, res) {
