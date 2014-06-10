@@ -9,6 +9,7 @@ app.set('view engine', 'jade');
 app.set('views', './views');
 
 app.use(express.static('./public'));
+app.use(express.logger('dev'));
 
 app.get('/', function (req, res) {
 	res.render('index', {title: config.title, message: config.message});
