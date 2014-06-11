@@ -10,10 +10,21 @@ app.set('views', './views');
 
 app.use(express.static('./public'));
 app.use(express.logger('dev'));
+app.use(express.responseTime());
+app.use(app.router);
 
-app.get('/', function (req, res) {
-	res.render('index', {title: config.title, message: config.message});
-});
+if (app.get('env') == 'production') {
+	app.get('/', function (req, res) {
+		res.render('index', {title: config.title, message: config.message, env: app.get('env')});
+	});
+}
+
+if (app.get('env') == 'development') {
+	app.use(express.errorHandler());
+	app.get('/', function (req, res) {
+		res.send('development mode test');
+	});
+}
 
 app.get('/say-hello', function (req, res) {
 	res.render('hello');
