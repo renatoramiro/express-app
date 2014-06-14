@@ -2,6 +2,7 @@ var http = require('http')
 	, express = require('express');
 
 var namespace = require('express-namespace');
+var resource = require('express-resource');
 var app = express();
 
 var iniparser = require('iniparser');
@@ -14,6 +15,8 @@ app.use(express.static('./public'));
 app.use(express.logger('dev'));
 app.use(express.responseTime());
 app.use(app.router);
+
+app.resource('users', require('./resources/users.js'));
 
 var routes = require('./routes')(app);
 
