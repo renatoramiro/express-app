@@ -52,6 +52,29 @@ app.namespace('/articles', function () {
 	});
 });
 
+app.use(function (req, res) {
+	res.status(404);
+	res.render('404.jade', 
+		{
+			title: '404',
+			message: 'File not found'
+		});
+});
+
+app.use(function (error, req, res, next) {
+	res.status(500);
+	res.render('500.jade', 
+		{
+			title: '500',
+			error: error
+		});
+})
+
+app.configure('development', function(){
+  app.use(express.errorHandler());
+  app.locals.pretty = true;
+});
+
 http.createServer(app).listen(config.port, function () {
 	console.log('Express app started on port ' + config.port);
 });
