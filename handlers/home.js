@@ -1,5 +1,4 @@
 exports.index = function (req, res) {
-	error();
 	res.set('X-Test', 'OK');
 	res.render('index');
 };
@@ -16,4 +15,16 @@ exports.download_logo = function (req, res) {
 		if (err) {console.log(err);}
 		else { console.log('File downloaded');}
 	});
+};
+
+exports.url1 = function (req, res) {
+	res.redirect('/url2');
+};
+
+exports.url2 = function (req, res) {
+	res.render('url2',
+			{ title: 'Url 2',
+				message: 'Redirecionado da Url 1 para a Url 2.'
+			}
+	);
 };
