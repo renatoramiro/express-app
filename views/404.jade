@@ -1,7 +1,8 @@
-doctype html
-html
-	head
-		title #{title}
-	body
-		h1 #{title}
-		p #{message}
+extends layout
+
+block title
+	title #{title}
+
+block content
+	h1 #{title}
+	p #{error}

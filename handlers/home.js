@@ -1,6 +1,6 @@
 exports.index = function (req, res) {
 	res.set('X-Test', 'OK');
-	res.render('index');
+	res.render('index', {title: 'Teste', cars: ["Saab", "Volvo", "BMW"]});
 };
 
 exports.logo = function (req, res) {
