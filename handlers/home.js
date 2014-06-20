@@ -28,3 +28,58 @@ exports.url2 = function (req, res) {
 			}
 	);
 };
+
+exports.search = function (req, res) {
+	res.render('search');
+};
+
+exports.search_result = function (req, res) {
+	var skills = req.query.skills
+	console.log('Skills: ');
+	for (var i = 0; i < skills.length; i++) {
+		console.log((i+1) +'. '+ skills[i]);
+	};
+	res.json(req.query.skills);
+};
+
+exports.signup = function (req, res) {
+	res.render('signup');
+};
+
+exports.signup_post = function (req, res) {
+	req.session.name = req.body.name;
+	req.session.email = req.body.email;
+	console.log(req.body);
+	res.redirect('/entrou');
+};
+
+exports.entrou = function (req, res) {
+	var name = req.session.name;
+	var email = req.session.email;
+	res.render('entrou', {name: name, email: email});
+};
+
+exports.logout = function (req, res) {
+	req.session.name = null;
+	req.session.email = null;
+	res.redirect('/signup');
+};
+
+exports.edit = function (req, res) {
+	res.render('edit', {name: req.session.name, email: req.session.email});
+};
+
+exports.update_profile = function (req, res) {
+	var name = req.body.name;
+	var email = req.body.email;
+
+	if (name) {
+		req.session.name = name;
+	}
+
+	if (email) {
+		req.session.email = email;
+	}
+
+	res.redirect('/entrou');
+}

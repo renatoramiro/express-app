@@ -1,0 +1,26 @@
+extends layouts/layout-demo
+
+block title
+	title Simple Search
+
+block content
+	h1 Search Skills
+	p Select the skills to search for.
+  
+	form(action='/search-result', method='get')
+		h3 Skills
+		ul
+			li
+				input(type='checkbox', name='skills', value='Nunchucks')
+				label Nunchucks
+			li
+				input(type='checkbox', name='skills', value='Hacking')
+				label Hacking
+			li
+				input(type='checkbox', name='skills', value='Dancing')
+				label Dancing
+			li
+				input(type='checkbox', name='skills', value='Shooting')
+				label Shooting
+
+			input(type='submit', value='Search')

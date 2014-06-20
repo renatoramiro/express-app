@@ -1,0 +1,19 @@
+extends layouts/layout-demo
+
+block title
+	title Signup
+
+block content
+	h1 Simple Signup
+	p Enter your name and email address to become a member.
+  
+	form(action='/signup', method='post')
+		div
+			label Name
+			input(type='text', name='name')
+		div
+			label Email
+			input(type='text', name='email')
+		div
+			input(type='submit', value='Signup')
+		

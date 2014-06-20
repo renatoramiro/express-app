@@ -14,6 +14,10 @@ app.set('views', './views');
 app.use(express.static('./public'));
 app.use(express.logger('dev'));
 app.use(express.responseTime());
+app.use(express.methodOverride());
+app.use(express.bodyParser());
+app.use(express.cookieParser('secret'));
+app.use(express.cookieSession());
 app.use(app.router);
 
 app.resource('users', require('./resources/users.js'));

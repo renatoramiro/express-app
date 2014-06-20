@@ -1,0 +1,18 @@
+extends layouts/layout-demo
+
+block title
+	title Edit Profile
+
+block content
+	h1 Edit Profile
+	p Edit your Profile
+
+	form(action='/update_profile', method='post')
+		div
+			label Name
+			input(type='text', name='name', value="#{name}")
+		div
+			label Email
+			input(type='text', name='email', value="#{email}")
+		div
+			input(type='submit', value='Edit')

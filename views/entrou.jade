@@ -1,0 +1,18 @@
+extends layouts/layout-demo
+
+block title
+	title Entrou no Sistema
+
+block content
+	h1 Entrou
+	p #[b Name:] #{name}
+	p #[b Email: ] #{email}
+
+	hr
+
+	if name != null
+		a(href='/edit') Editar 
+		a(href='/logout') Sair
+	else
+		a(href='/signup') Home
+
